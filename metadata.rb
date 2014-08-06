@@ -1,4 +1,5 @@
 #-*- encoding : utf-8 -*-
+name             "elasticsearch"
 maintainer       "Ian Ehlert"
 maintainer_email "ian.ehlert@sportngin.com"
 license          "Apache"
