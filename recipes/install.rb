@@ -45,7 +45,7 @@ if !!node[:elasticsearch][:basic_auth]
     source "elasticsearch-http-basic-1.0.3.jar"
     owner node[:elasticsearch][:user]
     group node[:elasticsearch][:user]
-    mode 0755
+    mode '0755'
     backup false
     action :create_if_missing
   end
