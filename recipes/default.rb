@@ -5,7 +5,7 @@
   directory path do
     owner node[:elasticsearch][:user]
     group node[:elasticsearch][:user]
-    mode 0755
+    mode '0755'
     recursive true
     action :create
   end
@@ -16,7 +16,7 @@ template "elasticsearch-env.sh" do
   source "elasticsearch-env.sh.erb"
   owner node[:elasticsearch][:user]
   group node[:elasticsearch][:user]
-  mode 0755
+  mode '0755'
 end
 
 
@@ -25,7 +25,7 @@ template "elasticsearch.init" do
   path   "/etc/init.d/elasticsearch"
   source "elasticsearch.init.erb"
   owner 'root'
-  mode 0755
+  mode '0755'
 end
 
 # services
@@ -43,7 +43,7 @@ template "elasticsearch.yml" do
   source "elasticsearch.yml.erb"
   owner node[:elasticsearch][:user]
   group node[:elasticsearch][:user]
-  mode 0755
+  mode '0755'
   variables :hosts => hosts
 end
 
@@ -52,6 +52,6 @@ template "elasticsearch.monitrc" do
   path   "/etc/monit.d/elasticsearch.monitrc"
   source "elasticsearch.monitrc.erb"
   owner 'root'
-  mode 0755
+  mode '0755'
   notifies :run, resources(:execute => "reload-monit")
 end
