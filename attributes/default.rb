@@ -10,11 +10,12 @@ default.elasticsearch[:download_url]  = [node.elasticsearch[:host], node.elastic
 default.elasticsearch[:dir]       = "/data"
 default.elasticsearch[:user]      = "elasticsearch"
 default.elasticsearch[:home_dir]  = [node.elasticsearch[:dir], node.elasticsearch[:user]].join('/')
+default.elasticsearch[:version_dir] = "#{node[:elasticsearch][:home_dir]}-#{node[:elasticsearch][:version]}"
 default.elasticsearch[:command_path]  = [node.elasticsearch[:home_dir], 'bin', 'elasticsearch'].join('/')
 
-default.elasticsearch[:path][:conf] = [node.elasticsearch[:home_dir], "config"].join('/')
-default.elasticsearch[:path][:data] = [node.elasticsearch[:home_dir], "data"].join('/')
-default.elasticsearch[:path][:plugins] = [node.elasticsearch[:home_dir], "plugins"].join('/')
+default.elasticsearch[:path][:conf] = [node.elasticsearch[:version_dir], "config"].join('/')
+default.elasticsearch[:path][:data] = [node.elasticsearch[:version_dir], "data"].join('/')
+default.elasticsearch[:path][:plugins] = [node.elasticsearch[:version_dir], "plugins"].join('/')
 default.elasticsearch[:path][:logs] = ['/var/log',node.elasticsearch[:user]].join('/')
 default.elasticsearch[:path][:pids] = '/var/run'
 default.elasticsearch[:pid_file]  = [node.elasticsearch[:path][:pids], "elasticsearch.pid"].join('/')
