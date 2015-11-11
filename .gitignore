@@ -10,4 +10,5 @@ bin/*
 
 Berksfile.lock
 .idea
+*.pem
 

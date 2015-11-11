@@ -1,13 +1,13 @@
 sudo: false
 env:
   global:
-  - EC2_SSH_KEY_PATH: ec2.pem
+  - EC2_SSH_KEY_PATH: id_rsa_kitchen_ec2.pem
   - secure: GTQMYCqLo03dUr8c7npLrZUkGuZH48eXObGxyMbaeMDvWMwI6cz1m4U2qUvezfo3B6LB5P9RXe+Q5DCy1FNHswMlttf/v+mDw5O77wTB/g8+NQi+3D7hAjHJ5s4EguXwFBxpPyG1xFJ4VoQOXvrHbrUiSBAY7dzLST200aKHJeI=
   - secure: eScYRqLmynNsvWT91Iqd6zio3jhPqjgXAe+Fd19ePqI5uHUH+1K8yFwcD7L5KeDyA9Jtrjc1yD2iTOcvzJHKg5hb2VleCjLQw9IJKxhrTw9WHrKlY90+x0Q2vTH2420/qlGexBkvYWTXHrBeneX7EQMWfbfYkWc6K8kGBnssOyM=
   - secure: FtzalO9cnuFVUupAmwTxQTQYXumaf8UVZIpxvTBSlnyneaas1hsz0R1OIwkSf29oopC9Cv5S5EeBwTz2sfua/0u93qnCTlinxK10bB2CP2cNtdwD0YRYlzKO//OmG9WP7sduNUqe4c5AtmFlz/aWabC1l4/sRjcWLz1Kcn8dx6Y=
 before_install:
 - openssl aes-256-cbc -K $encrypted_92f88852bd34_key -iv $encrypted_92f88852bd34_iv
-  -in id_rsa_kitchen_ec2.enc -out id_rsa_kitchen_ec2 -d
+  -in id_rsa_kitchen_ec2.enc -out id_rsa_kitchen_ec2.pem -d
 - chmod 600 ec2.pem
 script: bundle exec kitchen test -d always
 language: ruby
