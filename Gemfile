@@ -5,7 +5,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'berkshelf', '~>3'
+  gem 'berkshelf'
   gem 'test-kitchen'
   gem 'serverspec'
   gem 'kitchen-ec2'
