@@ -1,9 +1,9 @@
 #-*- encoding : utf-8 -*-
 name             "elasticsearch"
-maintainer       "Ian Ehlert"
-maintainer_email "ian.ehlert@sportngin.com"
+maintainer       "Sport Ngin"
+maintainer_email "platform-ops@sportngin.com"
 license          "Apache"
-description      "Installs elasticsearch"
+description      "Installs ElasticSearch on AWS OpsWorks."
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.markdown'))
 version          "0.1.0"
 
