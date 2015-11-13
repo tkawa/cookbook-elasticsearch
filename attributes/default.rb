@@ -1,6 +1,6 @@
 # #-*- encoding : utf-8 -*-
 # === VERSION AND LOCATION
-default.elasticsearch[:version]       = "0.90.3"
+default.elasticsearch[:version]       = "1.5.2"
 default.elasticsearch[:host]          = "http://download.elasticsearch.org"
 default.elasticsearch[:repository]    = "elasticsearch/elasticsearch"
 default.elasticsearch[:filename]      = "elasticsearch-#{node.elasticsearch[:version]}.tar.gz"
@@ -21,10 +21,11 @@ default.elasticsearch[:path][:pids] = '/var/run'
 default.elasticsearch[:pid_file]  = [node.elasticsearch[:path][:pids], "elasticsearch.pid"].join('/')
 
 # === MEMORY
-# Maximum amount of memory to use is automatically computed as one half of total available memory on the machine.
-# You may choose to set it in your node/role configuration instead.
-allocated_memory = "#{(node.memory.total.to_i * 0.6 ).floor / 1024}m"
-default.elasticsearch[:allocated_memory] = allocated_memory
+# Use half of memory for heap but no more than magical limit.
+# https://www.elastic.co/guide/en/elasticsearch/guide/current/_limiting_memory_usage.html
+# https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html
+half_memory_mb = ((node.memory.total.to_i * 0.5 ).floor / 1024).floor
+default.elasticsearch[:allocated_memory] = "#{[half_memory_mb, 30500].min}m"
 
 default.elasticsearch[:thread_stack_size] = "256k"
 

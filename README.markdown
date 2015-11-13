@@ -6,8 +6,7 @@ Installs and configures ElasticSearch on AWS OpsWorks.
 Requirements
 ------------
 
-* AmazonLinux AMI
-* Chef 0.9
+Tested against Amazon Linux 2015.09 with Chef 11.10, but may be compatible with similar versions.
 
 Usage
 -----
@@ -39,4 +38,18 @@ All that's needed to make this work on OpsWorks is to add the appropriate config
     }
   }
 }
+```
+
+Testing
+-------
+Testing is done with http://www.foodcritic.io/ and http://kitchen.ci/
+
+To run the test suite, execute rake: `bundle exec rake`.
+
+## Testing Monit Integration
+By default the Monit HTTP interface is disabled which is required for CLI tools like `monit status`.  If you want to 
+enable it for development and testing add the folling lines to `/etc/monit.conf` and run `sudo service monit restart`.
+```
+set httpd port 2812 and use the address localhost
+  allow localhost
 ```
