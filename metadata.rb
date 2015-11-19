@@ -1,9 +1,10 @@
 #-*- encoding : utf-8 -*-
-maintainer       "Teruo Adachi"
-maintainer_email "interu@sonicgarden.jp"
+name             "elasticsearch"
+maintainer       "Sport Ngin"
+maintainer_email "platform-ops@sportngin.com"
 license          "Apache"
-description      "Installs elasticsearch"
-long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
-version          "0.0.1"
+description      "Installs ElasticSearch on AWS OpsWorks."
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.markdown'))
+version          "0.1.0"
 
 depends "java"
